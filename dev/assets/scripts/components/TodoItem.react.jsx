@@ -1,13 +1,8 @@
 var React = require('react');
-var ReactPropTypes = React.PropTypes;
 var TodoActions = require('../actions/TodoActions');
 var TodoTextInput = require('./TodoTextInput.react');
-var cx = require('react/lib/cx');
 
 var TodoItem = React.createClass({
-  propTypes: {
-   todo: ReactPropTypes.object.isRequired
-  },
   getInitialState: function() {
     return {
       isEditing: false
@@ -18,30 +13,18 @@ var TodoItem = React.createClass({
     var input;
     if (this.state.isEditing) {
       input =
-        <TodoTextInput
-          className="edit"
-          onSave={this._onSave}
-          value={todo.text}
-        />;
+        <TodoTextInput className="edit" onSave={this._onSave} value={todo.text} />;
     }
     return (
-      <li
-        className={cx({
+      <li className={cx({
           'completed': todo.complete,
           'editing': this.state.isEditing
         })}
         key={todo.id}>
         <div className="view">
-          <input
-            className="toggle"
-            type="checkbox"
-            checked={todo.complete}
-            onChange={this._onToggleComplete}
-          />
-          <label onDoubleClick={this._onDoubleClick}>
-            {todo.text}
-          </label>
-          <button className="destroy" onClick={this._onDestroyClick} />
+          <div className="toggle" onClick={this._onToggleComplete}></div>
+          <label onClick={this._onLabelClick}>{todo.text}</label>
+          <div className="destroy" onClick={this._onDestroyClick}></div>
         </div>
         {input}
       </li>
@@ -50,7 +33,7 @@ var TodoItem = React.createClass({
   _onToggleComplete: function() {
     TodoActions.toggleComplete(this.props.todo);
   },
-  _onDoubleClick: function() {
+  _onLabelClick: function() {
     this.setState({isEditing: true});
   },
   _onSave: function(text) {
@@ -61,4 +44,15 @@ var TodoItem = React.createClass({
     TodoActions.destroy(this.props.todo.id);
   }
 });
+
+function cx(classNames) {
+  if (typeof classNames == 'object') {
+    return Object.keys(classNames).filter(function(className) {
+      return classNames[className];
+    }).join(' ');
+  } else {
+    return Array.prototype.join.call(arguments, ' ');
+  }
+};
+
 module.exports = TodoItem;

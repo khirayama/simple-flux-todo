@@ -5,4 +5,3 @@ React.render(
   <TodoApp />,
   document.getElementById('todoapp')
 );
-

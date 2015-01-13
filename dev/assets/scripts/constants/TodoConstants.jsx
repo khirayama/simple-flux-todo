@@ -1,11 +1,8 @@
-var keyMirror = require('keymirror');
-
-module.exports = keyMirror({
-  TODO_CREATE: null,
-  TODO_COMPLETE: null,
-  TODO_DESTROY: null,
-  TODO_DESTROY_COMPLETED: null,
-  TODO_TOGGLE_COMPLETE_ALL: null,
-  TODO_UNDO_COMPLETE: null,
-  TODO_UPDATE_TEXT: null
-});
+var events = {
+  TODO_CREATE: 'TODO_CREATE',
+  TODO_COMPLETE: 'TODO_COMPLETE',
+  TODO_DESTROY: 'TODO_DESTROY',
+  TODO_UNDO_COMPLETE: 'TODO_UNDO_COMPLETE',
+  TODO_UPDATE_TEXT: 'TODO_UPDATE_TEXT'
+};
+module.exports = events;

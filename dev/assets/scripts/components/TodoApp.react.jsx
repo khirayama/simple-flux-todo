@@ -1,19 +1,13 @@
-var Footer = require('./Footer.react');
+var React = require('react');
 var Header = require('./Header.react');
 var MainSection = require('./MainSection.react');
-var React = require('react');
 var TodoStore = require('../stores/TodoStore');
-
-function getTodoState() {
-  return {
-    allTodos: TodoStore.getAll(),
-    areAllComplete: TodoStore.areAllComplete()
-  };
-}
 
 var TodoApp = React.createClass({
   getInitialState: function() {
-    return getTodoState();
+    return {
+      todos: TodoStore.getAll()
+    };
   },
   componentDidMount: function() {
     TodoStore.addChangeListener(this._onChange);
@@ -25,16 +19,14 @@ var TodoApp = React.createClass({
   	return (
       <div>
         <Header />
-        <MainSection
-          allTodos={this.state.allTodos}
-          areAllComplete={this.state.areAllComplete}
-        />
-        <Footer allTodos={this.state.allTodos} />
+        <MainSection todos={this.state.todos} />
       </div>
   	);
   },
   _onChange: function() {
-    this.setState(getTodoState());
+    this.setState({
+      todos: TodoStore.getAll()
+    });
   }
 });
 module.exports = TodoApp;

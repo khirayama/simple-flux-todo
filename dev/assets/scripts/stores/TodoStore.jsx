@@ -5,7 +5,7 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var _todos = {};
+var _todos = storage('get');
 
 function create(text) {
   var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
@@ -18,31 +18,18 @@ function create(text) {
 function update(id, updates) {
   _todos[id] = assign({}, _todos[id], updates);
 }
-function updateAll(updates) {
-  for (var id in _todos) {
-    update(id, updates);
-  }
-}
 function destroy(id) {
   delete _todos[id];
 }
-function destroyCompleted() {
-  for (var id in _todos) {
-    if (_todos[id].complete) {
-      destroy(id);
-    }
+function storage() {
+  if(!_todos) {
+    return JSON.parse(localStorage.getItem('todos')) || {};
+  } else {
+    localStorage.setItem('todos', JSON.stringify(_todos));
   }
 }
 
 var TodoStore = assign({}, EventEmitter.prototype, {
-  areAllComplete: function() {
-    for (var id in _todos) {
-      if (!_todos[id].complete) {
-        return false;
-      }
-    }
-    return true;
-  },
   getAll: function() {
     return _todos;
   },
@@ -64,45 +51,25 @@ AppDispatcher.register(function(payload) {
   switch(action.actionType) {
     case TodoConstants.TODO_CREATE:
       text = action.text.trim();
-      if (text !== '') {
-        create(text);
-      }
+      if (text !== '') create(text);
       break;
-
-    case TodoConstants.TODO_TOGGLE_COMPLETE_ALL:
-      if (TodoStore.areAllComplete()) {
-        updateAll({complete: false});
-      } else {
-        updateAll({complete: true});
-      }
-      break;
-
     case TodoConstants.TODO_UNDO_COMPLETE:
       update(action.id, {complete: false});
       break;
-
     case TodoConstants.TODO_COMPLETE:
       update(action.id, {complete: true});
       break;
-
     case TodoConstants.TODO_UPDATE_TEXT:
       text = action.text.trim();
-      if (text !== '') {
-        update(action.id, {text: text});
-      }
+      if (text !== '') update(action.id, {text: text});
       break;
-
     case TodoConstants.TODO_DESTROY:
       destroy(action.id);
       break;
-
-    case TodoConstants.TODO_DESTROY_COMPLETED:
-      destroyCompleted();
-      break;
-
     default:
       return true;
   }
+  storage();
   TodoStore.emitChange();
   return true;
 });

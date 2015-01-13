@@ -29,22 +29,11 @@ var TodoActions = {
       });
     }
   },
-  toggleCompleteAll: function() {
-    AppDispatcher.handleViewAction({
-      actionType: TodoConstants.TODO_TOGGLE_COMPLETE_ALL
-    });
-  },
   destroy: function(id) {
     AppDispatcher.handleViewAction({
       actionType: TodoConstants.TODO_DESTROY,
       id: id
     });
   },
-  destroyCompleted: function() {
-    AppDispatcher.handleViewAction({
-      actionType: TodoConstants.TODO_DESTROY_COMPLETED
-    });
-  }
-
 };
 module.exports = TodoActions;
