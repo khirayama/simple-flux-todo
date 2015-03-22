@@ -18,4 +18,5 @@ $ gulp
 [一人React.js Advent Calendar 2014](http://qiita.com/advent-calendar/2014/reactjs)
   
 バックエンドで興味を持って触ってみた人（特にRailsかな）は、以下のRebuild.fmはおすすめです。
-[84: One Source Multi Use(Naoya Ito)](http://rebuild.fm/84/) - 29min頃からReact話。Railsとの話（assetspipelineとか含め）もあがったり
+[84: One Source Multi Use(Naoya Ito)](http://rebuild.fm/84/)  
+29min頃からReact話。Railsとの話（assetspipelineとか含め）もあがったり
