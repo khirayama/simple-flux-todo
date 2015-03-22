@@ -5,7 +5,7 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var _todos = storage('get');
+var _todos = storage();
 
 function create(text) {
   var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
@@ -38,32 +38,35 @@ var TodoStore = assign({}, EventEmitter.prototype, {
   },
   addChangeListener: function(callback) {
     this.on(CHANGE_EVENT, callback);
-  },
-  removeChangeListener: function(callback) {
-    this.removeListener(CHANGE_EVENT, callback);
   }
 });
 
 AppDispatcher.register(function(payload) {
+  console.log(payload);
   var action = payload.action;
   var text;
 
   switch(action.actionType) {
     case TodoConstants.TODO_CREATE:
+      console.log('store');
       text = action.text.trim();
       if (text !== '') create(text);
       break;
     case TodoConstants.TODO_UNDO_COMPLETE:
+      console.log('store');
       update(action.id, {complete: false});
       break;
     case TodoConstants.TODO_COMPLETE:
+      console.log('store');
       update(action.id, {complete: true});
       break;
     case TodoConstants.TODO_UPDATE_TEXT:
+      console.log('store');
       text = action.text.trim();
       if (text !== '') update(action.id, {text: text});
       break;
     case TodoConstants.TODO_DESTROY:
+      console.log('store');
       destroy(action.id);
       break;
     default:

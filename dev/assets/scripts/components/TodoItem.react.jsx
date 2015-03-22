@@ -12,8 +12,7 @@ var TodoItem = React.createClass({
     var todo = this.props.todo;
     var input;
     if (this.state.isEditing) {
-      input =
-        <TodoTextInput className="edit" onSave={this._onSave} value={todo.text} />;
+      input = <TodoTextInput className="edit" onSave={this._onSave} value={todo.text} />;
     }
     return (
       <li className={cx({
@@ -53,6 +52,6 @@ function cx(classNames) {
   } else {
     return Array.prototype.join.call(arguments, ' ');
   }
-};
+}
 
 module.exports = TodoItem;
