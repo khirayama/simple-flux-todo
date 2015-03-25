@@ -26,6 +26,7 @@ config =
     jade:
       pretty: true
     sass:
+      indentedSyntax: true
       errLogToConsole: true
       sourceComments : 'normal'
     please:
@@ -39,7 +40,7 @@ config =
       module:
         loaders: [{
           test: /\.jsx$/
-          loader: 'jsx-loader'
+          loader: 'babel-loader'
         }]
       resolve:
         extensions: ['', '.js', '.jsx']
