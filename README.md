@@ -1,6 +1,9 @@
 # シンプルなtodoをfluxで実装
 gulp、webpack環境でreactを使ってtodoをflux実装してみたよ
 
+## デモ
+[SIMPLE FLUX TODO](http://khirayama.github.io/simple-flux-todo/public/)
+
 ## やってみる
 
 ```
@@ -20,3 +23,4 @@ $ gulp
 バックエンドで興味を持って触ってみた人（特にRailsかな）は、以下のRebuild.fmはおすすめです。
 [84: One Source Multi Use(Naoya Ito)](http://rebuild.fm/84/)  
 29min頃からReact話。Railsとの話（assetspipelineとか含め）もあがったり
+
