@@ -1,0 +1,137 @@
+@charset "UTF-8";
+/* line 1, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+/* line 8, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+body {
+  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.4em;
+  background: #b6b6b6;
+  color: #4d4d4d;
+  width: 420px;
+  margin: 0 auto;
+  font-smoothing: antialiased; }
+
+/* line 17, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+#todoapp {
+  background: #fff;
+  margin: 130px 0 40px 0;
+  position: relative;
+  -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.15);
+          box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.15); }
+
+/* line 24, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+#new-todo, .edit {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  font-size: 24px;
+  font-family: inherit;
+  line-height: 1.4em;
+  border: 0;
+  outline: none;
+  color: inherit;
+  padding: 6px;
+  border: 1px solid #999;
+  -webkit-box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+  font-smoothing: antialiased; }
+
+/* line 39, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+#new-todo {
+  padding: 16px;
+  border: none;
+  background: rgba(0, 0, 0, 0.02);
+  z-index: 2;
+  -webkit-box-shadow: none;
+          box-shadow: none; }
+
+/* line 46, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+#main {
+  position: relative;
+  z-index: 2;
+  border-top: 1px dotted #adadad; }
+
+/* line 51, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+#todo-list {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+  /* line 55, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+  #todo-list li {
+    position: relative;
+    font-size: 24px;
+    border-bottom: 1px dotted #ccc; }
+    /* line 59, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+    #todo-list li:last-child {
+      border-bottom: none; }
+    /* line 61, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+    #todo-list li .edit {
+      display: inline; }
+    /* line 64, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+    #todo-list li.editing .edit {
+      display: block;
+      width: 100%;
+      padding: 13px 55px; }
+    /* line 68, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+    #todo-list li.editing .view {
+      display: none; }
+    /* line 70, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+    #todo-list li .toggle {
+      display: block;
+      text-align: center;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      margin: auto 0;
+      font-size: 22px;
+      appearance: none; }
+      /* line 83, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+      #todo-list li .toggle:after {
+        content: '✔︎'; }
+    /* line 85, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+    #todo-list li label {
+      white-space: pre;
+      word-break: break-word;
+      padding: 15px;
+      margin: 0 45px;
+      display: block;
+      line-height: 1.2;
+      -webkit-transition: color 0.4s;
+              transition: color 0.4s; }
+    /* line 93, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+    #todo-list li.completed label {
+      color: #a9a9a9;
+      text-decoration: line-through; }
+    /* line 96, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+    #todo-list li .destroy {
+      display: block;
+      text-align: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      margin: auto 0;
+      font-size: 22px; }
+      /* line 108, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+      #todo-list li .destroy:after {
+        content: '✖'; }
+    /* line 110, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+    #todo-list li .edit {
+      display: none; }
+    /* line 112, /Users/hirayama/Work/simple-flux-todo/dev/assets/styles/base.sass */
+    #todo-list li.editing:last-child {
+      margin-bottom: -1px; }
